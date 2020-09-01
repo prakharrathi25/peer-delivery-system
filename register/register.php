@@ -13,6 +13,16 @@
     <body>
 
         <main id="main-register">
+
+            <!-- Get the PHP registration code  -->
+
+            <?php
+
+                if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                    require('register_process.php');
+                }
+            ?>
+
             <section id="register">
 
                 <div class="row m-0">
@@ -30,15 +40,15 @@
                                 <div class="d-flex justify-content-center">
                                     <img  class="camera-icon" src="../assets/images/camera.svg" alt="camera-icon">
                                 </div>
-                                <img src="../assets/images/default_profile.png" style="width: 200px; height: 200px;" class="img rounded-circle" alt="profile">
-                                <small class="form-text text-black-50">Choose Image* </small>
-                                <input type="file" class="form-control-file" name="profileUpload"  id="upload-profile">
+                                <img src="user_images/default_profile.png" style="width: 200px; height: 200px;" class="img rounded-circle" alt="profile">
+                                <small class="form-text text-black-50">Choose Image*</small>
+                                <input type="file" form="reg-form" class="form-control-file" name="profileUpload"  id="upload-profile">
                             </div>
                         </div>
 
                         <!-- Registration Form Upload -->
                         <div class="d-flex justify-content-center">
-                            <form class="reg-form" id="reg-form" enctype="multipart/form-data" action="register.php" method="post">
+                            <form id="reg-form" enctype="multipart/form-data" action="register.php" method="post">
 
                                 <div class="form-row">
 
