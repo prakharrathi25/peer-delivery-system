@@ -64,7 +64,11 @@
 
                 <!-- PHP Script to save the data -->
                 <?php
-                    if(isset($_POST['submit-message']){
+
+
+                    if(isset($_POST['submit-message'])) {
+
+                        // Save Data in the database
                         $name = $_POST['name'];
                         $email = $_POST['email'];
                         $message = $_POST['message'];
@@ -73,10 +77,30 @@
                          $sql = "INSERT into feedback(name, email, message, date_created) VALUES('$name', '$email', '$message', NOW())";
 
                          // Perform a query, check for error
-                         mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                         if(mysqli_query($conn, $sql)) {
+                             echo "Your Feedback has been saved!";
+                         } else {
+                             die(mysqli_error($conn));
+                         }
+
+                         mysqli_close($conn);
+
+                         // Send email to the user
+                         $to = "pr440@snu.edu.in"; // this is your Email address
+                         $from = $_POST['email']; // this is the sender's Email address
+                         $subject = "New Feedback!";
+                         $subject2 = "Your feedback has been saved successfully";
+                         $message = $name . " wrote the following:" . "\n\n" . $_POST['message'];
+                         $message2 = "We thank you for your feedback. Somebody from our team will get back to you shortly. Here is a copy of your message, " . $name . ":\n\n" . $_POST['message'];
+
+                         $headers = "From:" . $from;
+                         $headers2 = "From:" . $to;
+                         mail($to, $subject, $message, $headers);
+                         mail($from, $subject2, $message2, $headers2); // sends a copy of the message to the sender
+                         echo "Mail Sent. Thank you " . $name . ", we will contact you shortly.";
 
                          // Redirect to the login page
-                         header("location: index.html"); 
+                         header("location: contact.php?success=True");
 
                     }
                 ?>
@@ -84,5 +108,14 @@
             </div>
         </div>
     </section>
+
+    <script type="text/javascript">
+        // Function to display confirmation on clicking a button
+        function showConfirmation() {
+            document.getElementById("submitFeedback").style.background = "green";
+
+            alert("Your feedback was saved successfully!");
+        }
+    </script>
 </body>
 </html>
