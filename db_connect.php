@@ -3,7 +3,7 @@
     // Making a server connection
     $server = "localhost";
     $username = "root";
-    $password = "mysql@123";  // prakhar = mysql@123
+    $password = "mysql";  // prakhar = mysql@123
     $dbname = "delivery_db";
 
     try {
