@@ -124,7 +124,7 @@
 .inputBox input:focus ~ span,
 .inputBox input:valid ~ span,
 .inputBox textarea:focus ~ span,
-.inputBox textarea:focus ~ span{
+.inputBox textarea:valid ~ span{
     color: #00bcd4;
     font-size: 12px;
     transform: translateY(-15px);
