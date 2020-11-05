@@ -1,3 +1,9 @@
+<?php
+
+$curr_id = $_GET['id'];
+
+?>
+
 <!DOCTYPE html>
 <html><head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +19,7 @@
 <div class="row">
   <div class="col-75">
     <div class="container">
-      <form action="/action_page.php">
+      <form action="">
 
         <div class="row">
           <div class="col-50">
@@ -33,6 +39,33 @@
                 <input type="text" id="zip" name="zip" placeholder="200301">
               </div>
             </div>
+
+            <!-- Parcel Details -->
+            <div class="row">
+              <div class="col-50">
+                <label for="expyear">Weight (gms)</label>
+                <input type="text" id="Weight" name="Weight" placeholder="500">
+              </div>
+              <div class="col-50">
+                <label for="cvv">Height (cm)</label>
+                <input type="text" id="height" name="height" placeholder="35">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-50">
+                <label for="expyear">Width (cm)</label>
+                <input type="text" id="width" name="width" placeholder="2018">
+              </div>
+              <div class="col-50">
+                <label for="cvv">Length (cm)</label>
+                <input type="text" id="length" name="length" placeholder="352">
+              </div>
+            </div>
+            <label for="city">Content Desctiption (Optional)</label>
+            <textarea type="textarea" rows="4" cols="50" id="description" name="description" placeholder="Box Color, Contents etc.">
+            </textarea>
+
           </div>
 
           <div class="col-50">
@@ -59,17 +92,23 @@
                 <label for="cvv">CVV</label>
                 <input type="text" id="cvv" name="cvv" placeholder="352">
               </div>
+              <label for="cost">  Price Offering </label>
+              <input type="text" id="cost" name="cost" placeholder="250">
+
             </div>
           </div>
         </div>
-        <label for="image">Upload Parcel Image</label>
+        <br><label for="image">Upload Parcel Image</label>
         <label>
             <input type="file" id="file" accept="image/*">
         </label>
-        <button type="button" class="btn" id="btn">Submit</button>
+        <button type="button" name="order-submit" class="btn" id="btn">Place Order</button>
       </form>
+
     </div>
   </div>
+
+
   <div class="col-25">
     <div class="container">
       <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i></span></h4>
