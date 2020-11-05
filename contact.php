@@ -1,6 +1,6 @@
 <?php
   // Make the database connection
-  include('db_connect.php');
+  include('include/db_connect.php');
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +43,7 @@
                 </div>
             </div>
             <div class="contactForm">
-                <form action="contact.php" method="post" onsubmit="messageFunction()">
+                <form action="contact.php" method="post">
                     <h2>Send us a Message</h2>
                     <div class="inputBox">
                         <input type="text" name="name" required>
@@ -61,15 +61,9 @@
                         <input type="submit" name="submit-message" value="Send">
                     </div>
                 </form>
-                <script>
-                    function messageFunction(){
-                        alert("Your Message has been Sent");
-                    }
-                </script>
 
                 <!-- PHP Script to save the data -->
                 <?php
-
 
                     if(isset($_POST['submit-message'])) {
 

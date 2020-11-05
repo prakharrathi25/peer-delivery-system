@@ -75,7 +75,7 @@ if(empty($error)) {
     $hash_pass = password_hash($password, PASSWORD_DEFAULT);
 
     // make the php connection
-    require('../db_connect.php');
+    require('../include/db_connect.php');
 
     // Make a query
     $sql = "INSERT into users(firstName, lastname, email, password, profileImage, registerDate) VALUES('$firstName', '$lastName', '$email', '$hash_pass', '$profileImage', NOW())";
@@ -84,7 +84,7 @@ if(empty($error)) {
     mysqli_query($conn, $sql) or die(mysqli_error($conn));
 
     // Redirect to the login page
-    header("location: login.php"); 
+    header("location: login.php");
 
 } else {
     echo "Not Validate";

@@ -1,10 +1,10 @@
 <?php
 
 // Make the SQL connection
-include('../db_connect.php');
+include('../include/db_connect.php');
 
 // Load helper functions
-include('../include/helper.php'); 
+include('../include/helper.php');
 
 // UTILITY FUNCTIONS
 

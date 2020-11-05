@@ -1,8 +1,6 @@
 <?php
 
 // PHP file containing all the helper functions
-
-
 // Function to get user info
 function get_user_info($conn, $userID) {
 
