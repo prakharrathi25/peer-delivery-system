@@ -127,7 +127,7 @@ li,a,button{
 header {
   min-height: 100vh;
   width: 100%;
-  background: url("1.jpg") no-repeat top center / cover;
+  background: url("../images/index1.jpg") no-repeat top center / cover;
   position: relative;
 }
 
@@ -169,14 +169,14 @@ header {
 .Earn {
     min-height: 100vh;
     width: 100%;
-    background: url("2.jpg") no-repeat top center / cover;
+    background: url("../images/index2.jpg") no-repeat top center / cover;
     position: relative;
 }
 
 .Deliver {
     min-height: 100vh;
     width: 100%;
-    background: url("3.jpg") no-repeat top center / cover;
+    background: url("../images/index3.jpg") no-repeat top center / cover;
     position: relative;
 }
 .container.active .bar {
