@@ -19,24 +19,24 @@ $curr_id = $_GET['id'];
 <div class="row">
   <div class="col-75">
     <div class="container">
-      <form action="">
+      <form method="post" enctype="multipart/form-data" action="order_process.php">
 
         <div class="row">
           <div class="col-50">
             <h3>Destination Address</h3>
             <label for="fname"><i class="fa fa-user"></i> Recepients Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="Kartikey Garg">
+            <input type="text" id="fname" name="name" placeholder="John Doe" required>
             <label for="email"><i class="fa fa-envelope"></i> Recepients Number</label>
-            <input type="text" id="email" name="email" placeholder="9XXXXXXXXX">
+            <input type="text" id="email" name="email" placeholder="john@doe.com" required>
             <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-            <input type="text" id="adr" name="address" placeholder="Hostel 1A, SNU">
+            <input type="text" id="adr" name="address" placeholder="Hostel 1A, SNU" required>
             <label for="city"><i class="fa fa-institution"></i> Destination City</label>
-            <input type="text" id="city" name="city" placeholder="Greater Noida">
+            <input type="text" id="city" name="city" placeholder="Greater Noida" required>
 
             <div class="row">
               <div class="col-50">
                 <label for="zip">Pin Code</label>
-                <input type="text" id="zip" name="zip" placeholder="200301">
+                <input type="text" id="zip" name="zip" placeholder="200301" required>
               </div>
             </div>
 
@@ -44,22 +44,22 @@ $curr_id = $_GET['id'];
             <div class="row">
               <div class="col-50">
                 <label for="expyear">Weight (gms)</label>
-                <input type="text" id="Weight" name="Weight" placeholder="500">
+                <input type="text" id="Weight" name="weight" placeholder="500" required>
               </div>
               <div class="col-50">
                 <label for="cvv">Height (cm)</label>
-                <input type="text" id="height" name="height" placeholder="35">
+                <input type="text" id="height" name="height" placeholder="35" required>
               </div>
             </div>
 
             <div class="row">
               <div class="col-50">
                 <label for="expyear">Width (cm)</label>
-                <input type="text" id="width" name="width" placeholder="2018">
+                <input type="text" id="width" name="width" placeholder="25" required>
               </div>
               <div class="col-50">
                 <label for="cvv">Length (cm)</label>
-                <input type="text" id="length" name="length" placeholder="352">
+                <input type="text" id="length" name="length" placeholder="35" required>
               </div>
             </div>
             <label for="city">Content Desctiption (Optional)</label>
@@ -93,14 +93,14 @@ $curr_id = $_GET['id'];
                 <input type="text" id="cvv" name="cvv" placeholder="352">
               </div>
               <label for="cost">  Price Offering </label>
-              <input type="text" id="cost" name="cost" placeholder="250">
+              <input type="text" id="cost" name="cost" placeholder="250" required>
 
             </div>
           </div>
         </div>
         <br><label for="image">Upload Parcel Image</label>
         <label>
-            <input type="file" id="file" accept="image/*">
+            <input type="file" id="file" name="startImage" accept="image/*" required>
         </label>
         <button type="button" name="order-submit" class="btn" id="btn">Place Order</button>
       </form>
@@ -123,8 +123,8 @@ $curr_id = $_GET['id'];
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script>
-    $("#btn").click(function(){
+<!-- <script>
+    $("#btn1").click(function(){
         var name=$("#cname").val();
         var ccnum=$("#ccnum").val();
         var fname=$("#fname").val();
@@ -136,7 +136,7 @@ $curr_id = $_GET['id'];
         var expyear=$("#expyear").val();
         var cvv=$("#cvv").val();
         var file=$("#file").val();
-        if(name=='' || ccnum=='' ||fname=='' ||email=='' ||adr=='' ||city=='' ||zip=='' ||expmonth=='' ||expyear=='' ||cvv=='' || file=='')
+        if(name=='' || ccnum=='' ||fname=='' ||email=='' ||adr=='' ||city=='' ||zip=='' || file=='')
         {
             swal("Error!", "Please fill all the fields!", "error");
         }
@@ -144,6 +144,6 @@ $curr_id = $_GET['id'];
             swal("Great!", "Your Order Successfully Placed!", "success");
         }
 })
-</script>
+</script> -->
 </body>
 </html>

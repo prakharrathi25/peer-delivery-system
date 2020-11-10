@@ -1,9 +1,8 @@
 <?php
-    // include('../include/helper.php');
 
     // Make database connection
     include('../include/db_connect.php');
-    
+
     // Function to get user info
     function get_user_info($conn, $userID) {
 
@@ -40,8 +39,8 @@
 
             <?php
 
-                if(isset($_SESSION['userID'])){
-                    $user = get_user_info($conn, $_SESSION['userID']);
+                if(isset($_SESSION['user_id'])){
+                    $user = get_user_info($conn, $_SESSION['user_id']);
                 }
 
                 if($_SERVER['REQUEST_METHOD'] == 'POST'){

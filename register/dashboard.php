@@ -1,5 +1,5 @@
 <?php
 
-echo "LOGIN SUCCESS";
-
+echo "LOGIN SUCCESS\n";
+echo $_GET['id'];
 ?>
