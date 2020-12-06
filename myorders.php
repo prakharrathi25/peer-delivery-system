@@ -1,3 +1,18 @@
+<?php
+
+// Make a database connection
+include('include/db_connect.php');
+
+// Get user id
+$page_id = $_GET['id'];
+
+// Collect User data
+$sql = "SELECT * FROM users WHERE user_id = '$page_id'";
+$result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+$user_row = $result->fetch_assoc();
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -19,15 +34,23 @@
 <body>
     <div class="sidebar-container">
         <div class="sidebar-logo">
-            Project Name
+            <?php echo $user_row['firstName'].' '.$user_row['lastName'] ?>
         </div>
         <ul class="sidebar-navigation">
             <div class="container-fluid">
-                <img src="..." class="img-fluid" alt="Responsive image">
+                <br>
+                <img src="<?php echo 'register/'.$user_row['profileImage'] ?>" class="img-fluid" alt="Responsive image"><br>
+
+                <!-- Display Details -->
+                <h4>Your Details</h4>
+                <p>User Rating: <?php echo $user_row['rating'] ?></p>
+                <p>Credits: <?php echo $user_row['credits'] ?> </p>
+                <p>Total Deliveries: <?php echo $user_row['deliveries'] ?></p>
+                <p>User Since: <?php echo substr($user_row['registerDate'], 0, 10) ?></p>
             </div>
             <li class="header">Navigation</li>
             <li>
-                <a href="dashboard.html">
+                <a href="Order/booking-order.php?id=<?php echo $page_id ?>">
                     <i class="fa fa-home" aria-hidden="true"></i> Book a courier
                 </a>
             </li>
@@ -38,7 +61,7 @@
             </li>
             <li class="header">Orders</li>
             <li>
-                <a href="myorders.html">
+                <a href="myorders.php?id=<?php echo $page_id; ?>">
                     <i class="fa fa-users" aria-hidden="true"></i> My Orders
                 </a>
             </li>
@@ -56,45 +79,56 @@
     </div>
     <div class="content-container">
         <div class="container">
+                    <h3>Your Placed Orders</h3>
+
+                    <!-- Collect order details -->
+                    <?php
+                        $order_sql = "SELECT * from packages where user_id = $page_id";
+                        $order_result=mysqli_query($conn, $order_sql) or die(mysqli_error($conn));
+                        while($row = $order_result->fetch_assoc()){
+                     ?>
+                     <!-- Start Showing Order Cards  -->
+
+                     <!-- Order Card -->
                     <div class="card mb-3 text-white bg-dark">
                         <div class="row no-gutters">
                             <div class="col-md-4">
-                                <img src="..." class="card-img" alt="...">
+                                <img src="<?php echo substr($row['start_image'], 3)?>" class="card-img" alt="...">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    <h5 class="card-title">Bag Order</h5>
+                                    <h5 class="card-title">Recepient Name: <?php echo $row['name'] ?></h5>
                                     <div class="row">
                                         <div class="col">
                                             <address>
-                                                Pickup:<br>
-                                                Prakhar<br>
-                                                <a href="tel:123-456-7890">123-456-7890</a><br>
-                                                Noida<br>
-                                                <time>16/11/2020 12:00</time>
+                                                <strong>Pickup Location:</strong> <?php echo $row['pickup'] ?> <br>
+                                                <strong>Drop Location:</strong> <?php echo $row['destination'] ?> <br><br>
+                                                <strong>Dimenstions (cm):</strong> <?php echo $row['length'].'x'.$row['width']. 'x'.$row['height']?>
+
+
                                             </address>
                                         </div>
                                         <div class="col">
                                             <address>
-                                                Delivered to:<br>
-                                                Karthikey<br>
-                                                <a href="tel:123-456-7890">123-456-7890</a><br>
-                                                Noida<br>
-                                                <time>16/11/2020 12:00</time>
-                                            </address>
-                                        </div>
-                                        <div class="col">
-                                            <address>
-                                                Delivered by:<br>
-                                                someone<br>
-                                                <a href="tel:123-456-7890">123-456-7890</a><br>
-                                                Noida<br>
-                                                <time>16/11/2020 12:00</time>
+                                                <strong>Description: </strong> <?php echo $row['content_description'] ?> <br>
+                                                <strong>Cost: </strong> <?php echo $row['cost']; ?> <br><br>
+                                                <strong>Status: </strong><?php echo $row['status'] ?>
                                             </address>
                                         </div>
                                         <div class="col">
                                             <p>
-                                                Instructions:<br>
+                                                <strong>Special Instructions: </strong><?php echo $row['instructions'] ?><br>
+                                                <strong>Delivery Agent:</strong> <?php
+                                                                    if($_row['traveller_id']){
+                                                                        $travel_sql = "SELECT firstName, lastName from users where user_id = $tid";
+                                                                        $travel_result=mysqli_query($conn, $travel_sql) or die(mysqli_error($conn));
+                                                                        $t_row = $travel_result->fetch_assoc();
+                                                                        echo $t_row['firstName'].$t_row['lastName'];
+                                                                    }else{
+                                                                        echo "Not Assigned";
+                                                                    }
+
+                                                                ?>
                                             </p>
                                         </div>
                                     </div>
@@ -102,6 +136,9 @@
                             </div>
                         </div>
                     </div>
+
+                <?php } ?>
+
                 </div>
             </div>
         </div>

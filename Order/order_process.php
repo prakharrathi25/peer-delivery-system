@@ -1,6 +1,5 @@
 <?php
 
-echo("Reached Page 2");
 // Make the database connection
 include('../include/db_connect.php');
 
@@ -8,20 +7,25 @@ include('../include/db_connect.php');
 $curr_id = (int)$_GET['id'];
 
 // Collect Image
-$file = $_FILES['startImage'];
-$targetDir = "../assests/images/";
+$file = $_FILES['orderImage'];
+$targetDir = "../assets/images/";
 
 // get the filename
 $filename = basename($file['name']);
+
+// Create a unique filename
+$filename = time()."_".$filename;
 $targetFilePath = $targetDir.$filename;
 $filetype = pathinfo($targetFilePath, PATHINFO_EXTENSION);
 
 // Upload the image
 if(!empty($filename)) {
-    $allowed = array('jpeg', 'jpg', 'png', 'gif');
+    $allowed = array('jpeg', 'jpg', 'png', 'gif', 'jfif');
     if(in_array($filetype, $allowed)) {
         if(move_uploaded_file($file['tmp_name'], $targetFilePath)){
-            return $targetFilePath;
+            echo "Image has been saved\n";
+        }else{
+            echo "Image not saved in the location";
         }
     }else{
         echo "You cannot use this file type!";
@@ -33,8 +37,9 @@ if(isset($_POST['order-submit'])) {
 
     // Create data variables
     $name = $_POST['name'];
-    $email = $_POST['email'];
-    $address = $_POST['address'];
+    $number = $_POST['number'];
+    $daddress = $_POST['deliver-address'];
+    $paddress = $_POST['pickup-address'];
     $city = $_POST['city'];
     $zip = (int)$_POST['zip'];
     $weight = (int)$_POST['weight'];
@@ -42,16 +47,19 @@ if(isset($_POST['order-submit'])) {
     $width = (int)$_POST['width'];
     $length = (int)$_POST['length'];
     $desc = $_POST['desc'];
+    $inst = $_POST['inst'];
     $status = "Active";
     $cost = (int)$_POST['cost'];
+    $insurance = $_POST["gridRadios"];
 
     // Create SQL QUery for other details
-    $sql = "INSERT into packages(name, email, destination, destination_city, pincode, wight, height, width, length, user_id, status, start_image, cost, content_description) VALUES('$name', '$email', '$address', '$city', $zip, $weight, $height, $width, $length, $curr_id, $status, '$targetFilePath', $cost, '$desc')";
+    $sql = "INSERT into packages(name, phnum, pickup, destination, destination_city, pincode, weight, height, width, length, user_id, status, start_image, cost, content_description, instructions, insurance) VALUES('$name', '$number', '$paddress', '$daddress', '$city', $zip, $weight, $height, $width, $length,";
+    $sql = $sql."$curr_id, '$status','$targetFilePath', $cost, '$desc', '$inst', '$insurance')";
 
-    // Perform a query, check for error
+    // Send the SQL Query
     if(mysqli_query($conn, $sql)) {
-        console.log("Order Placed!");
-
+        echo "Your order has been placed\n";
+        header('Location: ../myorders.php?id='.$curr_id);
     } else {
         die(mysqli_error($conn));
     }

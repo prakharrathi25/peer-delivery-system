@@ -1,6 +1,6 @@
 <?php
 
-$curr_id = $_GET['id'];
+$user_id = $_GET['id'];
 
 ?>
 
@@ -19,7 +19,7 @@ $curr_id = $_GET['id'];
 <div class="row">
   <div class="col-75">
     <div class="container">
-      <form method="post" enctype="multipart/form-data" action="order_process.php">
+      <form method="post" enctype="multipart/form-data" action="order_process.php?id=<?php echo $user_id?>">
 
         <div class="row">
           <div class="col-50">
