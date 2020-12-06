@@ -67,7 +67,7 @@ $user_row = $result->fetch_assoc();
             </li>
             <li>
                 <a href="#">
-                    <i class="fa fa-cog" aria-hidden="true"></i> My requests
+                    <i class="fa fa-cog" aria-hidden="true"></i> My Requests
                 </a>
             </li>
             <li>
@@ -79,13 +79,13 @@ $user_row = $result->fetch_assoc();
     </div>
     <div class="content-container">
         <div class="container">
-                    <h3>Your Placed Orders</h3>
+                    <h3>Your Placed Requests</h3>
 
                     <!-- Collect order details -->
                     <?php
-                        $order_sql = "SELECT * from packages where user_id = $page_id";
-                        $order_result=mysqli_query($conn, $order_sql) or die(mysqli_error($conn));
-                        while($row = $order_result->fetch_assoc()){
+                        $placed_sql = "SELECT * FROM requests, packages WHERE packages.pid = requests.package_id AND user=$page_id";
+                        $placed_result=mysqli_query($conn, $placed_sql) or die(mysqli_error($conn));
+                        while($row = $placed_result->fetch_assoc()){
                      ?>
                      <!-- Start Showing Order Cards  -->
 
@@ -111,8 +111,9 @@ $user_row = $result->fetch_assoc();
                                         <div class="col">
                                             <address>
                                                 <strong>Description: </strong> <?php echo $row['content_description'] ?> <br>
-                                                <strong>Cost: </strong> <?php echo $row['cost']; ?> <br><br>
-                                                <strong>Status: </strong><?php echo $row['status'] ?>
+                                                <strong>Cost: </strong> <?php echo  "Rs. ".$row['cost']; ?> <br><br>
+                                                <strong>Status: </strong><?php echo $row['status'] ?><br><br>
+                                                <strong>Your Quote: </strong><?php echo "Rs. ".$row['price'] ?>
                                             </address>
                                         </div>
                                         <div class="col">
@@ -138,6 +139,64 @@ $user_row = $result->fetch_assoc();
                     </div>
 
                 <?php } ?>
+
+                <!-- Second Half: Received Requests -->
+                <h3>Your Received Requests</h3>
+
+                <!-- Collect order details -->
+                <?php
+                    $placed_sql = "SELECT * FROM requests, packages WHERE packages.pid = requests.package_id AND user_id=$page_id AND status='Active'";
+                    $placed_result=mysqli_query($conn, $placed_sql) or die(mysqli_error($conn));
+                    while($row = $placed_result->fetch_assoc()){
+                 ?>
+                 <!-- Start Showing Order Cards  -->
+
+                 <!-- Order Card -->
+                <div class="card mb-3 text-white bg-dark">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="<?php echo substr($row['start_image'], 3)?>" class="card-img" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Requester Name: <?php echo $row['r_name'] ?></h5>
+                                <div class="row">
+                                    <div class="col">
+                                        <address>
+                                            <strong>Pickup Location:</strong> <?php echo $row['pickup'] ?> <br>
+                                            <strong>Drop Location:</strong> <?php echo $row['destination'] ?> <br><br>
+                                            <strong>Dimenstions (cm):</strong> <?php echo $row['length'].'x'.$row['width']. 'x'.$row['height']?>
+
+
+                                        </address>
+                                    </div>
+                                    <div class="col">
+                                        <address>
+                                            <strong>Description: </strong> <?php echo $row['content_description'] ?> <br>
+                                            <strong>Cost: </strong> <?php echo  "Rs. ".$row['cost']; ?> <br><br>
+                                            <strong>Status: </strong><?php echo $row['status'] ?><br><br>
+                                            <strong>Recieved Quote: </strong><?php echo "Rs. ".$row['price'] ?>
+                                        </address>
+                                    </div>
+                                    <div class="col">
+                                        <p>
+                                            <strong>Special Instructions: </strong><?php echo $row['instructions'] ?><br>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div style="justify-content: center" class="row">
+                                    <!-- allot the package to the user who sent the request -->
+                                    <form class="" action="accept-order.php?uid=<?php echo $row['user'];?>&pid=<?php echo $row['pid']; ?>&cost=<?php echo $row['price']?>&owner=<?php echo $page_id ?>" method="post">
+                                        <!--  -->
+                                        <input type="submit" name="request-submit" value="Accept Order" style="float: right" />
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <?php } ?>
 
                 </div>
             </div>

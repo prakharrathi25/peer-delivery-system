@@ -66,8 +66,8 @@ $user_row = $result->fetch_assoc();
                 </a>
             </li>
             <li>
-                <a href="#">
-                    <i class="fa fa-cog" aria-hidden="true"></i> My requests
+                <a href="myrequests.php?id=<?php echo $page_id; ?>">
+                    <i class="fa fa-cog" aria-hidden="true"></i> My Requests
                 </a>
             </li>
             <li>
@@ -80,10 +80,11 @@ $user_row = $result->fetch_assoc();
     <div class="content-container">
         <div class="container">
                     <h3>Your Placed Orders</h3>
+                    <h4>Orders that you have placed for delivery will appear here</h4>
 
                     <!-- Collect order details -->
                     <?php
-                        $order_sql = "SELECT * from packages where user_id = $page_id";
+                        $order_sql = "SELECT * from packages where user_id = $page_id   ";
                         $order_result=mysqli_query($conn, $order_sql) or die(mysqli_error($conn));
                         while($row = $order_result->fetch_assoc()){
                      ?>
@@ -93,7 +94,13 @@ $user_row = $result->fetch_assoc();
                     <div class="card mb-3 text-white bg-dark">
                         <div class="row no-gutters">
                             <div class="col-md-4">
-                                <img src="<?php echo substr($row['start_image'], 3)?>" class="card-img" alt="...">
+                                <img src="<?php
+                                    // Check if the delivery is complete
+                                    if($row['final_image'])
+                                        echo substr($row['final_image'], 3);
+                                    else
+                                        echo substr($row['start_image'], 3);
+                                ?>" class="card-img" alt="...">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
@@ -119,19 +126,22 @@ $user_row = $result->fetch_assoc();
                                             <p>
                                                 <strong>Special Instructions: </strong><?php echo $row['instructions'] ?><br>
                                                 <strong>Delivery Agent:</strong> <?php
-                                                                    if($_row['traveller_id']){
-                                                                        $travel_sql = "SELECT firstName, lastName from users where user_id = $tid";
-                                                                        $travel_result=mysqli_query($conn, $travel_sql) or die(mysqli_error($conn));
-                                                                        $t_row = $travel_result->fetch_assoc();
-                                                                        echo $t_row['firstName'].$t_row['lastName'];
-                                                                    }else{
-                                                                        echo "Not Assigned";
-                                                                    }
+                                                        if($row['traveller_id']){
+                                                            $travel_sql = "SELECT firstName, lastName from users where user_id = {$row['traveller_id']}";
+                                                            $travel_result = mysqli_query($conn, $travel_sql) or die(mysqli_error($conn));
+                                                            $t_row = $travel_result->fetch_assoc();
+                                                            echo $t_row['firstName']." ".$t_row['lastName'];
+                                                        }else{
+                                                            echo "Not Assigned";
+                                                        }
 
                                                                 ?>
                                             </p>
                                         </div>
                                     </div>
+                                    <?php if($row['final_image']){
+                                        echo '<strong>Note:     </strong>'."The image being displayed is the final image";
+                                    } ?>
                                 </div>
                             </div>
                         </div>
@@ -139,7 +149,70 @@ $user_row = $result->fetch_assoc();
 
                 <?php } ?>
 
+                <!-- Part 2: Orders you're delivering -->
+                <hr>
+                <h3>Delivery Orders</h3>
+                <h4>Orders that you have been assigned to deliver will appear here.</h4>
+
+                <!-- Collect order details -->
+                <?php
+                    $order_sql = "SELECT * from packages where traveller_id = $page_id and status = 'In Delivery'";
+                    $order_result=mysqli_query($conn, $order_sql) or die(mysqli_error($conn));
+                    while($row = $order_result->fetch_assoc()){
+                 ?>
+                 <!-- Start Showing Order Cards  -->
+
+                 <!-- Order Card -->
+                <div class="card mb-3 text-white bg-dark">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="<?php echo substr($row['start_image'], 3)?>" class="card-img" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Recepient Name: <?php echo $row['name'] ?></h5>
+                                <div class="row">
+                                    <div class="col">
+                                        <address>
+                                            <strong>Pickup Location:</strong> <?php echo $row['pickup'] ?> <br>
+                                            <strong>Drop Location:</strong> <?php echo $row['destination'] ?> <br><br>
+                                            <strong>Dimenstions (cm):</strong> <?php echo $row['length'].'x'.$row['width']. 'x'.$row['height']?>
+
+
+                                        </address>
+                                    </div>
+                                    <div class="col">
+                                        <address>
+                                            <strong>Description: </strong> <?php echo $row['content_description'] ?> <br>
+                                            <strong>Cost: </strong> <?php echo $row['cost']; ?> <br><br>
+                                            <strong>Status: </strong><?php echo $row['status'] ?>
+                                        </address>
+                                    </div>
+                                    <div class="col">
+                                        <p>
+                                            <strong>Special Instructions: </strong><?php echo $row['instructions'] ?><br>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div style="justify-content: center" class="row">
+                                    <form class="" action="complete-order.php?pid=<?php echo $row['pid']; ?>" method="post">
+                                        <!--  -->
+
+                                        <input type="submit" name="complete-submit" value="Complete Order" style="float: right" />
+                                        <div style="overflow: hidden; padding-right: .5em;">
+                                           <input type="file" name="finalImg" required placeholder="Final Image Order" style="width: 100%;" />
+                                        </div>
+                                        <label for="">Upload Final Image</label>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+            <?php } ?>
+
+
             </div>
         </div>
     </div>

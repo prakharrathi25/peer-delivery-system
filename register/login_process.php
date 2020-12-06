@@ -72,7 +72,7 @@ if(empty($error)){
             $_SESSION['user_id'] = mysqli_insert_id($conn);
             $user_id = (int)$row['user_id'];
 
-            header("location: dashboard.php?id=$user_id");
+            header("location: ../myorders.php?id=$user_id");
             exit();
 
         }else{
