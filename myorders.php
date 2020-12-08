@@ -28,7 +28,7 @@ $user_row = $result->fetch_assoc();
     <link href="assets/css/ds.css" rel="stylesheet">
     <!-- <link href="" rel="stylesheet"> -->
     <link href="assets/css/dashboard1.css" rel="stylesheet">
-    <title>Dashboard</title>
+    <title>My Orders</title>
 </head>
 
 <body>
@@ -55,7 +55,7 @@ $user_row = $result->fetch_assoc();
                 </a>
             </li>
             <li>
-                <a href="dashboard1.html">
+                <a href="Pickup/all_orders.php?id=<?php echo $page_id ?>">
                     <i class="fa fa-tachometer" aria-hidden="true"></i> Pick a courier
                 </a>
             </li>
@@ -70,9 +70,20 @@ $user_row = $result->fetch_assoc();
                     <i class="fa fa-cog" aria-hidden="true"></i> My Requests
                 </a>
             </li>
+            <li class="header">Account Details</li>
+            <li>
+                <a href="edit-details.php?id=<?php echo $page_id ?>">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i> Edit Details
+                </a>
+            </li>
             <li>
                 <a href="#">
-                    <i class="fa fa-info-circle" aria-hidden="true"></i> Payment Information
+                    <i class="fa fa-info-circle" aria-hidden="true"></i> Add Credits
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i> Logout
                 </a>
             </li>
         </ul>
@@ -84,7 +95,7 @@ $user_row = $result->fetch_assoc();
 
                     <!-- Collect order details -->
                     <?php
-                        $order_sql = "SELECT * from packages where user_id = $page_id   ";
+                        $order_sql = "SELECT * from packages where user_id = $page_id and status!='Rated'";
                         $order_result=mysqli_query($conn, $order_sql) or die(mysqli_error($conn));
                         while($row = $order_result->fetch_assoc()){
                      ?>
@@ -141,7 +152,23 @@ $user_row = $result->fetch_assoc();
                                     </div>
                                     <?php if($row['final_image']){
                                         echo '<strong>Note:     </strong>'."The image being displayed is the final image";
-                                    } ?>
+                                        echo '</br>';
+                                    }
+
+                                    if($row['status'] == 'Delivered'){
+                                        echo '<br>';
+                                        echo '<form class="" action="rating-process.php?id='.$row["traveller_id"].'&pid='.$row['pid'].'&oid='.$row['user_id'].'" method="post">
+                                            <input type="submit" name="rating-submit" value="Rate Delivery" style="float: right" />
+                                            <div style="overflow: hidden; padding-right: .5em;">
+                                               <input type="number" name="rating" required placeholder="Rating for the user (0-10)" style="width: 100%;" />
+                                            </div>
+                                        </form>';
+                                    }
+
+                                    ?>
+
+
+
                                 </div>
                             </div>
                         </div>
@@ -195,9 +222,7 @@ $user_row = $result->fetch_assoc();
                                     </div>
                                 </div>
                                 <div style="justify-content: center" class="row">
-                                    <form class="" action="complete-order.php?pid=<?php echo $row['pid']; ?>" method="post">
-                                        <!--  -->
-
+                                    <form class="" enctype="multipart/form-data" action="complete-order.php?pid=<?php echo $row['pid']; ?>&id=<?php echo $page_id ?>" method="post">
                                         <input type="submit" name="complete-submit" value="Complete Order" style="float: right" />
                                         <div style="overflow: hidden; padding-right: .5em;">
                                            <input type="file" name="finalImg" required placeholder="Final Image Order" style="width: 100%;" />

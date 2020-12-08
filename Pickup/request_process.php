@@ -13,7 +13,7 @@ $package_id = (int)$_GET['pid'];
 // Collect name of the user
 $sql = "SELECT firstName from users where user_id=$user_id";
 $result=mysqli_query($conn, $sql) or die(mysqli_error($conn));
-$row = $result->fetch_assoc())
+$row = $result->fetch_assoc();
 $name = $row['firstName'];
 
 if(isset($_POST['request-submit'])){

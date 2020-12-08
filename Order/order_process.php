@@ -53,7 +53,7 @@ if(isset($_POST['order-submit'])) {
     $insurance = $_POST["gridRadios"];
 
     // Create SQL QUery for other details
-    $sql = "INSERT into packages(name, phnum, pickup, destination, destination_city, pincode, weight, height, width, length, user_id, status, start_image, cost, content_description, instructions, insurance) VALUES('$name', '$number', '$paddress', '$daddress', '$city', $zip, $weight, $height, $width, $length,";
+    $sql = "INSERT into packages(name, phNUM, pickup, destination, destination_city, pincode, weight, height, width, length, user_id, status, start_image, cost, content_description, instructions, insurance) VALUES('$name', '$number', '$paddress', '$daddress', '$city', $zip, $weight, $height, $width, $length,";
     $sql = $sql."$curr_id, '$status','$targetFilePath', $cost, '$desc', '$inst', '$insurance')";
 
     // Send the SQL Query
@@ -64,6 +64,6 @@ if(isset($_POST['order-submit'])) {
         die(mysqli_error($conn));
     }
 
-}   
+}
 
 ?>
