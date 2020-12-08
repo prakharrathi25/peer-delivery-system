@@ -5,11 +5,13 @@ include('include/db_connect.php');
 
 $package_id = $_GET['pid'];
 
-    // Save Final image
-    if(isset($_POST['complete-submit'])) {
-        $file = $_FILES['finalImg'];
-        echo $file;
+// Save Final image
+if(isset($_POST['complete-submit'])) {
+    $file = $_FILES['finalImg'];
+    if($file){
+        echo "HERE";
     }
+}
 
 $targetDir = "assets/images/";
 
@@ -21,21 +23,21 @@ $filename = time()."_".$filename;
 $targetFilePath = $targetDir.$filename;
 $filetype = pathinfo($targetFilePath, PATHINFO_EXTENSION);
 
-// // Upload the image
-// if(!empty($filename)) {
-//     $allowed = array('jpeg', 'jpg', 'png', 'gif', 'jfif');
-//
-//     if(in_array($filetype, $allowed)) {
-//         if(move_uploaded_file($file['tmp_name'], $targetFilePath)){
-//             echo "Image has been saved\n";
-//         }else{
-//             echo "Image not saved in the location";
-//         }
-//     }else{
-//         echo "You cannot use this file type!";
-//     }
-// }
-//
+// Upload the image
+if(!empty($filename)) {
+    $allowed = array('jpeg', 'jpg', 'png', 'gif', 'jfif');
+
+    if(in_array($filetype, $allowed)) {
+        if(move_uploaded_file($file['tmp_name'], $targetFilePath)){
+            echo "Image has been saved\n";
+        }else{
+            echo "Image not saved in the location";
+        }
+    }else{
+        echo "You cannot use this file type!";
+    }
+}
+
 // // Send image data to the database
 // $sql = "UPDATE packages SET final_image = '$targetFilePath', status='Delivered' WHERE pid = $package_id";
 //
