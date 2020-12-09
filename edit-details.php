@@ -77,6 +77,7 @@ $user_row = $result->fetch_assoc();
             </li>
         </ul>
     </div>
+    <div class="p-3 mb-2 bg-dark text-white">
     <div class="content-container">
         <div class="container">
             <h3 style="text-align: center; ">Your editable details</h3>
@@ -84,7 +85,8 @@ $user_row = $result->fetch_assoc();
             <h5>First Name: <?php echo $user_row['firstName'] ?></h5>
             <h5>Last Name: <?php echo $user_row['lastName'] ?></h5>
             <h5>Email: <?php echo $user_row['email'] ?></h5> <br>
-
+            <div class="row">
+                <div class="col-4">
             <form class="" action="edit-details.php?id=<?php echo $user_row['user_id']; ?>" method="post">
                 <label for="att">Select Atribute you want to change</label>
 
@@ -96,8 +98,12 @@ $user_row = $result->fetch_assoc();
                   <option value="password">Password</option>
                 </select>
                 <br>
+</div>
+                <div class="col-4">
                 <input type="text" name="newValue" placeholder="Value" required>
                 <input type="submit" name="submit-edit" value="Submit">
+</div>
+</div>
             </form>
             <br>
             <br>
@@ -185,7 +191,7 @@ $user_row = $result->fetch_assoc();
             ?>
 
         </div>
-
+    </div>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
