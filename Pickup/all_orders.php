@@ -27,7 +27,12 @@ $user_row = $result->fetch_assoc();
     <link href="../assets/css/ds.css" rel="stylesheet">
     <!-- <link href="" rel="stylesheet"> -->
     <link href="../assets/css/dashboard1.css" rel="stylesheet">
-    <title>Dashboard</title>
+    <title>All Orders</title>
+    <style media="screen">
+        .order-heading{
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -38,7 +43,7 @@ $user_row = $result->fetch_assoc();
         <ul class="sidebar-navigation">
             <div class="container-fluid">
                 <br>
-                <img src="<?php echo '../'.'register/'.$user_row['profileImage'] ?>" class="img-fluid" alt="Responsive image"><br>
+                <img src="<?php echo '../'.'register/'.$user_row['profileImage'] ?>" class="img-fluid" alt="Responsive image"><br><br>
 
                 <!-- Display Details -->
                 <h4>Your Details</h4>
@@ -49,24 +54,40 @@ $user_row = $result->fetch_assoc();
             </div>
             <li class="header">Navigation</li>
             <li>
-                <a href="dashboard.html">
+                <a href="../Order/booking-order.php?id=<?php echo $page_id ?>">
                     <i class="fa fa-home" aria-hidden="true"></i> Book a courier
                 </a>
             </li>
             <li>
-                <a href="dashboard1.html">
+                <a href="all_orders.php?id=<?php echo $page_id ?>">
                     <i class="fa fa-tachometer" aria-hidden="true"></i> Pick a courier
                 </a>
             </li>
             <li class="header">Orders</li>
             <li>
-                <a href="myorders.php">
+                <a href="../myorders.php?id=<?php echo $page_id; ?>">
                     <i class="fa fa-users" aria-hidden="true"></i> My Orders
                 </a>
             </li>
             <li>
+                <a href="../myrequests.php?id=<?php echo $page_id; ?>">
+                    <i class="fa fa-cog" aria-hidden="true"></i> My Requests
+                </a>
+            </li>
+            <li class="header">Account Details</li>
+            <li>
+                <a href="../edit-details.php?id=<?php echo $page_id ?>">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i> Edit Details
+                </a>
+            </li>
+            <li>
                 <a href="#">
-                    <i class="fa fa-cog" aria-hidden="true"></i> My requests
+                    <i class="fa fa-info-circle" aria-hidden="true"></i> Add Credits
+                </a>
+            </li>
+            <li>
+                <a href="../index.html">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i> Logout
                 </a>
             </li>
             <li>
@@ -80,8 +101,8 @@ $user_row = $result->fetch_assoc();
     <div class="content-container">
 
         <div class="container">
-                    <h3>All Placed Orders</h3>
-                    <p>Enter your quoted price for the delivery and click on "Place Request" to place your order. </p>
+                    <h3 class="order-heading">All Placed Orders</h3>
+                    <p class="order-heading">Enter your quoted price for the delivery and click on "Place Request" to place your order. </p>
 
                     <!-- Collect order details -->
                     <?php

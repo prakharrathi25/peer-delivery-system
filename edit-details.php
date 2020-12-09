@@ -39,7 +39,7 @@ $user_row = $result->fetch_assoc();
         <ul class="sidebar-navigation">
             <div class="container-fluid">
                 <br>
-                <img src="<?php echo 'register/'.$user_row['profileImage'] ?>" class="img-fluid" alt="Responsive image"><br>
+                <img src="<?php echo 'register/'.$user_row['profileImage'] ?>" class="img-fluid" alt="Responsive image"><br><br> 
 
                 <!-- Display Details -->
                 <h4>Your Details</h4>
@@ -55,7 +55,7 @@ $user_row = $result->fetch_assoc();
                 </a>
             </li>
             <li>
-                <a href="dashboard1.html">
+                <a href="Pickup/all_orders.php?id=<?php echo $page_id; ?>">
                     <i class="fa fa-tachometer" aria-hidden="true"></i> Pick a courier
                 </a>
             </li>
@@ -68,6 +68,22 @@ $user_row = $result->fetch_assoc();
             <li>
                 <a href="myrequests.php?id=<?php echo $page_id; ?>">
                     <i class="fa fa-cog" aria-hidden="true"></i> My Requests
+                </a>
+            </li>
+            <li class="header">Account Details</li>
+            <li>
+                <a href="edit-details.php?id=<?php echo $page_id ?>">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i> Edit Details
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i> Add Credits
+                </a>
+            </li>
+            <li>
+                <a href="index.html">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i> Logout
                 </a>
             </li>
             <li>

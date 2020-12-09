@@ -33,7 +33,21 @@ $user_row = $result->fetch_assoc();
     <style media="screen">
         body{
             /* background-image: url('assets/images/bg1.jpg'); */
-            background-color: #b0e0e6;
+            /* background-color: #b0e0e6; */
+            background-color: #5D7587;
+        }
+
+        hr {
+            /* top: 20px;
+            border: none; */
+            height: 5px;
+            background: grey;
+            margin-bottom: 50px;
+        }
+
+        .order-heading{
+            text-align: center;
+            color: white;
         }
     </style>
 
@@ -47,7 +61,7 @@ $user_row = $result->fetch_assoc();
         <ul class="sidebar-navigation">
             <div class="container-fluid">
                 <br>
-                <img src="<?php echo 'register/'.$user_row['profileImage'] ?>" class="img-fluid" alt="Responsive image"><br>
+                <img src="<?php echo 'register/'.$user_row['profileImage'] ?>" class="img-fluid" alt="Responsive image"><br><br> 
 
                 <!-- Display Details -->
                 <h4>Your Details</h4>
@@ -90,7 +104,7 @@ $user_row = $result->fetch_assoc();
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="index.html">
                     <i class="fa fa-info-circle" aria-hidden="true"></i> Logout
                 </a>
             </li>
@@ -99,7 +113,7 @@ $user_row = $result->fetch_assoc();
     <div class="content-container">
         <div class="container">
                     <h3 class="order-heading">Your Placed Orders</h3>
-                    <h4>Orders that you have placed for delivery will appear here</h4>
+                    <h5 class="order-heading">Orders that you have placed for delivery will appear here</h5><br>
 
                     <!-- Collect order details -->
                     <?php
@@ -186,8 +200,8 @@ $user_row = $result->fetch_assoc();
 
                 <!-- Part 2: Orders you're delivering -->
                 <hr>
-                <h3>Delivery Orders</h3>
-                <h4>Orders that you have been assigned to deliver will appear here.</h4>
+                <h3 class="order-heading">Delivery Orders</h3>
+                <h5 class="order-heading">Orders that you have been assigned to deliver will appear here.</h5><br>
 
                 <!-- Collect order details -->
                 <?php
