@@ -1,5 +1,0 @@
-<?php
-
-// Make Database Connection
-
-?>
