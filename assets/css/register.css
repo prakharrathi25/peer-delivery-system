@@ -14,12 +14,12 @@
 
 #register, #login-form{
     padding: 5% 0;
-    background: url("../assets/images/bg1.jpg") no-repeat;
+    background: url("../images/bg1.jpg") no-repeat;
     background-size: cover;
 }
 
 #login-form {
-    padding: 8% 0; 
+    padding: 8% 0;
 }
 
 #register .upload-profile-image {

@@ -76,10 +76,11 @@ if(empty($error)){
             exit();
 
         }else{
-            print("Incorrect password!");
+            echo "<br><h3 style='text-align:center; background-color:red;'>Incorrect password!</h3>";
+            // print("Incorrect password!");
         }
     }else{
-        print("Email not found!");
+        echo "<br><h3 style='text-align:center; background-color:red;'>Email Not Found!</h3>";
     }
 
 }else {

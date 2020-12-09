@@ -29,6 +29,14 @@ $user_row = $result->fetch_assoc();
     <!-- <link href="" rel="stylesheet"> -->
     <link href="assets/css/dashboard1.css" rel="stylesheet">
     <title>My Orders</title>
+
+    <style media="screen">
+        body{
+            /* background-image: url('assets/images/bg1.jpg'); */
+            background-color: #b0e0e6;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -90,7 +98,7 @@ $user_row = $result->fetch_assoc();
     </div>
     <div class="content-container">
         <div class="container">
-                    <h3>Your Placed Orders</h3>
+                    <h3 class="order-heading">Your Placed Orders</h3>
                     <h4>Orders that you have placed for delivery will appear here</h4>
 
                     <!-- Collect order details -->
@@ -111,7 +119,7 @@ $user_row = $result->fetch_assoc();
                                         echo substr($row['final_image'], 3);
                                     else
                                         echo substr($row['start_image'], 3);
-                                ?>" class="card-img" alt="...">
+                                ?>" class="card-img" style="" alt="...">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">

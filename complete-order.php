@@ -10,39 +10,42 @@ $user_id = $_GET['id'];
 if(isset($_POST['complete-submit'])) {
 
     $file = $_FILES['finalImg'];
-    if($file){
-        echo "HERE";
-    }
-}
 
-$targetDir = "assets/images/";
 
-// get the filename
-$filename = basename($file['name']);
+    var_dump($_FILES)."<br>";
 
-// Create a unique filename
-$filename = time()."_".$filename;
-$filetype = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+    $targetDir = "assets/images/";
 
-// Upload the image
-if(!empty($filename)) {
-    $allowed = array('jpeg', 'jpg', 'png', 'gif', 'jfif');
+    // get the filename
+    $filename = basename($file['name']);
 
-    if(in_array($filetype, $allowed)) {
-        if(move_uploaded_file($file['tmp_name'], $targetFilePath)){
-            echo "Image has been saved\n";
+    // Create a unique filename
+    $filename = time()."_".$filename;
+    $targetFilePath = $targetDir.$filename;
+
+    $filetype = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
+    echo $filetype."<br>";
+
+    // Upload the image
+    if(!empty($filename)) {
+        $allowed = array('jpeg', 'jpg', 'png', 'gif', 'jfif');
+
+        if(in_array($filetype, $allowed)) {
+            if(move_uploaded_file($file['tmp_name'], $targetFilePath)){
+                echo "Image has been saved\n";
+            }else{
+                echo "Image not saved in the location";
+            }
         }else{
-            echo "Image not saved in the location";
+            echo "You cannot use this file type!";
         }
-    }else{
-        echo "You cannot use this file type!";
     }
 }
 
 // Send image data to the database
 $targetFilePath = "../".$targetDir.$filename;
 $sql = "UPDATE packages SET final_image = '$targetFilePath', status='Delivered' WHERE pid = $package_id";
-
+echo $sql;
 // Send the SQL Query
 if(mysqli_query($conn, $sql)) {
     echo "Image data has been saved\n";

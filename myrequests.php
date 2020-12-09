@@ -83,7 +83,7 @@ $user_row = $result->fetch_assoc();
 
                     <!-- Collect order details -->
                     <?php
-                        $placed_sql = "SELECT * FROM requests, packages WHERE packages.pid = requests.package_id AND user=$page_id";
+                        $placed_sql = "SELECT * FROM requests, packages WHERE packages.pid = requests.package_id AND user=$page_id AND status ='Active'";
                         $placed_result=mysqli_query($conn, $placed_sql) or die(mysqli_error($conn));
                         while($row = $placed_result->fetch_assoc()){
                      ?>
@@ -181,6 +181,17 @@ $user_row = $result->fetch_assoc();
                                     <div class="col">
                                         <p>
                                             <strong>Special Instructions: </strong><?php echo $row['instructions'] ?><br>
+                                            <h5> <u>User Details</u>  </h5>
+                                            <strong>Contact: </strong><?php
+
+                                                $contact = "SELECT * from users where user_id = {$row['user']}";
+                                                $res=mysqli_query($conn, $contact) or die(mysqli_error($conn));
+                                                $us = $res->fetch_assoc();
+                                                echo $us['email'];
+
+                                            ?><br>
+                                            <strong>Rating: </strong> <?php echo $us['rating'] ?> <br>
+                                            <strong>Deliveries: </strong> <?php echo $us['deliveries'] ?> <br>
                                         </p>
                                     </div>
                                 </div>
