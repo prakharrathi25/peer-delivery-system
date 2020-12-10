@@ -114,7 +114,7 @@
                                 </div>
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Recepient Phone Number</label>
                                 <div class="col-sm-3">
-                                    <input type="number" class="form-control" name='number' id="inputEmail" required>
+                                    <input type="number" class="form-control" name='number' id="phn" required>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -136,7 +136,7 @@
                                 </div>
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Zip Code</label>
                                 <div class="col-sm-3">
-                                    <input type="number" class="form-control" name="zip" id="inputEmail" required>
+                                    <input type="number" class="form-control" name="zip" id="zip" required>
                                 </div>
                             </div>
                             <fieldset class="form-group">
@@ -200,7 +200,7 @@
                             <div class="form-group row">
                                 <label for="inputPassword3" class="col-sm-2 col-form-label">Price Offering (credits)</label>
                                 <div class="col-sm-4">
-                                    <input type="number" name="cost" class="form-control" id="phonenumber" required>
+                                    <input type="number" name="cost" min=0 max=<?php echo $user_row['credits']; ?> class="form-control" id="price" required>
                                 </div>
                             </div>
 
@@ -217,7 +217,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-10">
-                                    <button type="submit" name="order-submit" class="btn btn-primary">Book</button>
+                                    <button type="submit" name="order-submit" id="form-button" class="btn btn-primary">Book</button>
                                 </div>
                             </div>
 
@@ -241,7 +241,37 @@
         crossorigin="anonymous"></script>
     <script src="./src/bootstrap-input-spinner.js"></script>
     <script>
-        $("input[type='number']").inputSpinner()
+        // $("input[type='number']").inputSpinner()
+    </script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+
+        $("#form-button").click(function(){
+
+            var pnum=$("#phn").val();
+            var weight=$("#weight").val();
+            var h=$("#h").val();
+            var wid=$("#wid").val();
+            var len=$("#len").val();
+            var zip=$("#zip").val();
+            var price=$("#price").val();
+
+            if(isNaN(pnum)==true || pnum.length<10 || pnum.length>10)
+            {
+                swal("Error!", "Please fill appropriate phone number", "error");
+            }
+            else if(isNaN(zip)==true || zip.length<=5)
+            {
+                swal("Error!", "Zip Code cannot be less than 5 digits", "error");
+            }
+            else if(price > <?php echo $user_row['credits']; ?>)
+            {
+                swal("Error!", "Not enough credits. Please add more.", "error");
+            }
+            // else{
+            //     swal("Great!", "Your Order Successfully Placed!", "success");
+            // }
+    })
     </script>
 </body>
 

@@ -187,7 +187,7 @@ $user_row = $result->fetch_assoc();
                                         echo '<form class="" action="rating-process.php?id='.$row["traveller_id"].'&pid='.$row['pid'].'&oid='.$row['user_id'].'" method="post">
                                             <input type="submit" name="rating-submit" value="Rate Delivery" style="float: right" />
                                             <div style="overflow: hidden; padding-right: .5em;">
-                                               <input type="number" name="rating" required placeholder="Rating for the user (0-10)" style="width: 100%;" />
+                                               <input type="number" min=0 max=10 name="rating" required placeholder="Rating for the user (0-10)" style="width: 100%;" />
                                             </div>
                                         </form>';
                                     }
