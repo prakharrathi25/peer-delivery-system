@@ -158,7 +158,7 @@ $user_row = $result->fetch_assoc();
                                             <!--  -->
                                             <input type="submit" name="request-submit" value="Place Request" style="float: right" />
                                             <div style="overflow: hidden; padding-right: .5em;">
-                                               <input type="number" name="price-quote" required placeholder="Enter Price Quote" style="width: 100%;" />
+                                               <input type="number" min=0 name="price-quote" required placeholder="Enter Price Quote" style="width: 100%;" />
                                             </div>
                                         </form>
                                     </div>
