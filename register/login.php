@@ -32,16 +32,119 @@
         <link rel="stylesheet" href="../assets/css/register.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <style media="screen">
-        body{
-            background-image: url('../assets/images/bg1.jpg');
-            background-size: cover;
-        }
+            body{
+                background-image: url('../assets/images/bg1.jpg');
+                background-size: cover;
+                height: 100%;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+            .navbar{
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 10;
+                height: 3rem;
+            }
+            .menu{
+                max-width: 72rem;
+                width: 100%;
+                margin: 0 auto;
+                padding: 0 2rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                color: #fff;
+            }
+            .logo{
+                font-size: 1.1rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                line-height: 4rem;
+            }
+            .logo span {
+                font-weight: 300;
+            }
+            .nav_links{
+                list-style: none;
+            }
+
+            .nav_links li{
+                display: inline-block;
+                padding: 0px 20px;
+            }
+
+            .nav_links li a{
+                transition: all 0.3s ease 0s;
+            }
+
+            .nav_links li a:hover{
+                color: #0088a9;
+            }
+
+            li,a,button{
+                font-family: "Poppins", sans-serif;
+                font-weight: 500;
+                font-size: 16px;
+                color: white;
+                text-decoration: none;
+            }
+
+            .hamburger-menu {
+            height: 4rem;
+            width: 3rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            }
+
+            .bar {
+            width: 1.9rem;
+            height: 1.5px;
+            border-radius: 2px;
+            background-color: #eee;
+            transition: 0.5s;
+            position: relative;
+            }
+
+            .bar:before,
+            .bar:after {
+            content: "";
+            position: absolute;
+            width: inherit;
+            height: inherit;
+            background-color: #eee;
+            transition: 0.5s;
+            }
+
+            .bar:before {
+            transform: translateY(-9px);
+            }
+
+            .bar:after {
+            transform: translateY(9px);
+            }
         </style>
     </head>
     <body>
 
         <main id="main-register">
-
+            <div class="navbar">
+                <div class="menu">
+                    <a href="index.html"><h3 class="logo">PEER<span>Delivery</span></h3></a>
+                    <ul class="nav_links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about_us.html">About</a></li>
+                        <li><a href="contact.php">Contact</a></li>
+                    </ul>
+                    <div class="hamburger-menu">
+                        <div class="bar"></div>
+                    </div>
+                </div>
+            </div>
             <?php
 
                 if(isset($_SESSION['user_id'])){
