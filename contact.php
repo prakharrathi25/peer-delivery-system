@@ -14,6 +14,19 @@
 </head>
 <body>
     <section class="contact">
+        <div class="navbar">
+            <div class="menu">
+                <a href="index.html"><h3 class="logo">PEER<span>Delivery</span></h3></a>
+                <ul class="nav_links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about_us.html">About</a></li>
+                    <li><a href="contact.php">Contact</a></li>
+                </ul>
+                <div class="hamburger-menu">
+                    <div class="bar"></div>
+                </div>
+            </div>
+        </div>
         <div class= "content">
             <h2>Contact Us</h2>
             <p>Please feel free to contact us about any feedback, or issues you face while using our service.</p>
