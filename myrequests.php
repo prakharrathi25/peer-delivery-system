@@ -92,18 +92,13 @@ $user_row = $result->fetch_assoc();
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="Order/place-order.html">
                     <i class="fa fa-info-circle" aria-hidden="true"></i> Add Credits
                 </a>
             </li>
             <li>
                 <a href="../index1.html">
                     <i class="fa fa-info-circle" aria-hidden="true"></i> Logout
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-info-circle" aria-hidden="true"></i> Payment Information
                 </a>
             </li>
         </ul>

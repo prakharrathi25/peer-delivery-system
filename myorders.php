@@ -99,7 +99,7 @@ $user_row = $result->fetch_assoc();
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="Order/place-order.html">
                     <i class="fa fa-info-circle" aria-hidden="true"></i> Add Credits
                 </a>
             </li>
