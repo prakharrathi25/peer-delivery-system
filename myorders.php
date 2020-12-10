@@ -49,11 +49,6 @@ $user_row = $result->fetch_assoc();
             text-align: center;
             color: white;
         }
-        .card-img-top {
-            width: 20vw;
-            height: 30vh;
-            object-fit: contain;
-        }
     </style>
 
 </head>
@@ -66,7 +61,7 @@ $user_row = $result->fetch_assoc();
         <ul class="sidebar-navigation">
             <div class="container-fluid">
                 <br>
-                <img src="<?php echo 'register/'.$user_row['profileImage'] ?>" class="img-fluid" alt="Responsive image" style="width:400px;height:250px;"><br><br>
+                <img src="<?php echo 'register/'.$user_row['profileImage'] ?>" class="img-fluid" alt="Responsive image" ><br><br>
 
                 <!-- Display Details -->
                 <h4>Your Details</h4>
@@ -138,7 +133,7 @@ $user_row = $result->fetch_assoc();
                                         echo substr($row['final_image'], 3);
                                     else
                                         echo substr($row['start_image'], 3);
-                                ?>" class="card-img card-img-top" style="" alt="..." width="245px" height="206px">
+                                ?>" class="card-img" style="" alt="...">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
@@ -220,7 +215,7 @@ $user_row = $result->fetch_assoc();
                 <div class="card mb-3 text-white bg-dark">
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                            <img src="<?php echo substr($row['start_image'], 3)?>" class="card-img card-img-top" alt="...">
+                            <img src="<?php echo substr($row['start_image'], 3)?>" class="card-img" alt="...">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
