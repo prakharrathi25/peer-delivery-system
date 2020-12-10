@@ -28,7 +28,7 @@
     <link href="../assets/css/ds.css" rel="stylesheet">
     <!-- <link href="" rel="stylesheet"> -->
     <link href="../assets/css/dashboard.css" rel="stylesheet">
-    <title>Dashboard</title>
+    <title>Order Booking</title>
 </head>
 
 <body>

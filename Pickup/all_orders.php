@@ -106,7 +106,7 @@ $user_row = $result->fetch_assoc();
 
                     <!-- Collect order details -->
                     <?php
-                        $order_sql = "SELECT * from packages where user_id != $page_id";
+                        $order_sql = "SELECT * from packages where user_id != $page_id and status = 'Active'";
                         $order_result=mysqli_query($conn, $order_sql) or die(mysqli_error($conn));
                         while($row = $order_result->fetch_assoc()){
                      ?>

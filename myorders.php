@@ -61,7 +61,7 @@ $user_row = $result->fetch_assoc();
         <ul class="sidebar-navigation">
             <div class="container-fluid">
                 <br>
-                <img src="<?php echo 'register/'.$user_row['profileImage'] ?>" class="img-fluid" alt="Responsive image"><br><br> 
+                <img src="<?php echo 'register/'.$user_row['profileImage'] ?>" class="img-fluid" alt="Responsive image"><br><br>
 
                 <!-- Display Details -->
                 <h4>Your Details</h4>
@@ -240,6 +240,7 @@ $user_row = $result->fetch_assoc();
                                     <div class="col">
                                         <p>
                                             <strong>Special Instructions: </strong><?php echo $row['instructions'] ?><br>
+                                            <strong>Recepient Contact: </strong> <?php echo $row['phNum']; ?>
                                         </p>
                                     </div>
                                 </div>

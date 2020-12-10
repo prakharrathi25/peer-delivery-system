@@ -43,7 +43,7 @@
         .nav_links{
             list-style: none;
         }
-        
+
         .nav_links li{
             display: inline-block;
             padding: 0px 20px;
@@ -128,21 +128,21 @@
                     <div class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
                     <div class="text">
                         <h3>Address</h3>
-                        <p>Address Line 1 <br>Address Line 2<br>Address Line 3</p>
+                        <p>1/118, Mannat Villa<br>Shankar Rd, Bandra<br>Mumbai</p>
                     </div>
                 </div>
                 <div class="box">
                     <div class="icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
                     <div class="text">
                         <h3>Phone</h3>
-                        <p>9999999999</p>
+                        <p>+91-9643486525</p>
                     </div>
                 </div>
                 <div class="box">
                     <div class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></div>
                     <div class="text">
                         <h3>Email</h3>
-                        <p>something@email.com</p>
+                        <p>info@peerdelivery.com</p>
                     </div>
                 </div>
             </div>
