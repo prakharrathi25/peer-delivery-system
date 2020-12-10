@@ -1,0 +1,149 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us</title>
+    <link rel="stylesheet" href="assets/css/about-us.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        .navbar{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            height: 3rem;
+        }
+        .menu{
+            max-width: 72rem;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+        }
+        .logo{
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 4rem;
+        }
+        .logo span {
+            font-weight: 300;
+        }
+        .nav_links{
+            list-style: none;
+        }
+        
+        .nav_links li{
+            display: inline-block;
+            padding: 0px 20px;
+        }
+
+        .nav_links li a{
+            transition: all 0.3s ease 0s;
+        }
+
+        .nav_links li a:hover{
+            color: #0088a9;
+        }
+
+        li,a,button{
+            font-family: "Poppins", sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .hamburger-menu {
+        height: 4rem;
+        width: 3rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        }
+
+        .bar {
+        width: 1.9rem;
+        height: 1.5px;
+        border-radius: 2px;
+        background-color: #eee;
+        transition: 0.5s;
+        position: relative;
+        }
+
+        .bar:before,
+        .bar:after {
+        content: "";
+        position: absolute;
+        width: inherit;
+        height: inherit;
+        background-color: #eee;
+        transition: 0.5s;
+        }
+
+        .bar:before {
+        transform: translateY(-9px);
+        }
+
+        .bar:after {
+        transform: translateY(9px);
+        }
+
+    </style>
+
+</head>
+<body>
+<!--    <div class="container">-->
+    <div class="navbar">
+        <div class="menu">
+            <a href="index.html">
+                <h3 class="logo">PEER<span>Delivery</span></h3>
+            </a>
+            <ul class="nav_links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about_us.html">About</a></li>
+                <li><a href="contact.php">Contact</a></li>
+            </ul>
+            <div class="hamburger-menu">
+                <div class="bar"></div>
+            </div>
+        </div>
+    </div>
+    <div class="about-us">
+        <h2>Meet Our Team</h2>
+        <div class="ps">
+            <a href="#prakhar"><img src="assets/images/prakhar_rathi.jpg"></a>
+            <a href="#kartikey"><img src="assets/images/kartikey_garg.jpeg"></a>
+            <a href="#srikar"><img src="assets/images/tumul_vyas.jpeg"></a>
+            <a href="#tumul"><img src="assets/images/tumul_vyas.jpeg"></a>
+        </div>
+        <div class="indiv" id="prakhar">
+            <span class="name">Prakhar Rathi</span>
+<!--            <span class="border"></span>-->
+            <p>I am a third-year engineering student and the backend architect for this team. I also handle the team's data and machine learning needs.</p>
+        </div>
+        <div class="indiv" id="kartikey">
+            <span class="name">Kartikey Garg</span>
+<!--            <span class="border"></span>-->
+            <p>I am a third-year engineering student at SNU and currently pursuing my major in Computer Science. I am the chief UI developer and assistant front-end developer of the team.</p>
+        </div>
+        <div class="indiv" id="srikar">
+            <span class="name">Srikar Yelamanchili</span>
+            <span class="border">I am the UX designer of the team and I make sure the front-end is easy to use and easy to look at.</span>
+            <p> </p>
+        </div>
+        <div class="indiv" id="tumul">
+            <span class="name">Tumul Vyas</span>
+            <span class="border"></span>
+            <p> I am a third year computer science and a design minor student. I make UI speak for itself with my design ideas.</p>
+        </div>
+    </div>
+<!--    </div>-->
+</body>
+</html>

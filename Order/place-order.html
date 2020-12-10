@@ -1,0 +1,97 @@
+<?php
+
+$user_id = $_GET['id'];
+
+?>
+
+<!DOCTYPE html>
+<html><head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="order.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<title>Place Order</title>
+</head>
+
+<body>
+    <h2 style="text-align:center;">Transfer Money From Bank to Peer Credit</h2><br>
+<h3>Order Details</h3>
+<div class="row">
+  <div class="col-75">
+    <div class="container">
+      <form method="post" enctype="multipart/form-data" action="order_process.php?id=<?php echo $user_id?>">
+
+        <div class="row">
+          <div class="col-50">
+            <h3>Payment</h3>
+            <label for="fname">Accepted Cards</label>
+            <div class="icon-container">
+              <i class="fa fa-cc-visa" style="color:navy;"></i>
+              <i class="fa fa-cc-amex" style="color:blue;"></i>
+              <i class="fa fa-cc-mastercard" style="color:red;"></i>
+              <i class="fa fa-cc-discover" style="color:orange;"></i>
+            </div>
+            <label for="cname">Name on Card</label>
+            <input type="text" id="cname" name="cardname" placeholder="Kartikey Garg">
+            <label for="ccnum">Card number</label>
+            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+            <label for="cost">  Amount </label>
+            <input type="text" id="amount" name="cost" placeholder="250" required>
+            <label for="expmonth">Exp Month</label>
+            <input type="text" id="expmonth" name="expmonth" placeholder="September">
+            <div class="row">
+              <div class="col-50">
+                <label for="expyear">Exp Year</label>
+                <input type="text" id="expyear" name="expyear" placeholder="2018">
+              </div>
+              <div class="col-50">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" placeholder="352">
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" name="order-submit" class="btn" id="btn">Place Order</button>
+      </form>
+
+    </div>
+  </div>
+
+
+  <div class="col-25">
+    <div class="container">
+      <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i></span></h4>
+      <p><a href="#">Credit</a> <span class="price">250</span></p>
+      <hr>
+      <p>Total <span class="price" style="color:black"><b>250 Rupees </b></span></p>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    $("#btn").click(function(){
+        var ccnum=$("#ccnum").val();
+        var cname=$("#cname").val();
+        var expmonth=$("#expmonth").val();
+        var amount=$("#amount").val();
+        var expyear=$("#expyear").val();
+        var expmonth=$("#expmonth").val();
+        var cvv=$("#cvv").val();
+        if(ccnum=='' || cname=='' ||expmonth=='' ||amount=='' ||expyear=='' ||cvv=='' ||expmonth=='')
+        {
+            swal("Error!", "Please fill all the fields!", "error");
+        }
+        else if(isNaN(ccnum)==true)
+        {
+            swal("Error!", "Please fill appropriate value in Amount field", "error");
+        }
+        else{
+            swal("Great!", "Your Order Successfully Placed!", "success");
+        }
+})
+</script> -->
+</body>
+</html>
