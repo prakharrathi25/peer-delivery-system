@@ -61,7 +61,7 @@ $user_row = $result->fetch_assoc();
         <ul class="sidebar-navigation">
             <div class="container-fluid">
                 <br>
-                <img src="<?php echo 'register/'.$user_row['profileImage'] ?>" class="img-fluid" alt="Responsive image"style="width:300px;height:300px;"><br><br>
+                <img src="<?php echo 'register/'.$user_row['profileImage'] ?>" class="img-fluid" alt="Responsive image" style="width:400px;height:250px;"><br><br>
 
                 <!-- Display Details -->
                 <h4>Your Details</h4>
@@ -133,7 +133,7 @@ $user_row = $result->fetch_assoc();
                                         echo substr($row['final_image'], 3);
                                     else
                                         echo substr($row['start_image'], 3);
-                                ?>" class="card-img" style="" alt="..." style="width:400px;height:400px;">
+                                ?>" class="card-img" style="" alt="..." width="245px" height="206px">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
