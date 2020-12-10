@@ -49,12 +49,17 @@ $user_row = $result->fetch_assoc();
             text-align: center;
             color: white;
         }
+        .card-img-top {
+            width: 20vw;
+            height: 30vh;
+            object-fit: contain;
+        }
     </style>
 
 </head>
 
 <body>
-    <div class="sidebar-container">
+    <div class="sidebar-container justify-content-flex-start">
         <div class="sidebar-logo">
             <?php echo $user_row['firstName'].' '.$user_row['lastName'] ?>
         </div>
@@ -133,7 +138,7 @@ $user_row = $result->fetch_assoc();
                                         echo substr($row['final_image'], 3);
                                     else
                                         echo substr($row['start_image'], 3);
-                                ?>" class="card-img" style="" alt="..." width="245px" height="206px">
+                                ?>" class="card-img card-img-top" style="" alt="..." width="245px" height="206px">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
@@ -215,7 +220,7 @@ $user_row = $result->fetch_assoc();
                 <div class="card mb-3 text-white bg-dark">
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                            <img src="<?php echo substr($row['start_image'], 3)?>" class="card-img" alt="..." style="width:400px;height:400px;">
+                            <img src="<?php echo substr($row['start_image'], 3)?>" class="card-img card-img-top" alt="...">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
