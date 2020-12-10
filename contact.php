@@ -11,6 +11,97 @@
     <title>Contact Us</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/contact.css">
+    <style>
+        .navbar{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            height: 3rem;
+        }
+        .menu{
+            max-width: 72rem;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+        }
+        .logo{
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 4rem;
+        }
+        .logo span {
+            font-weight: 300;
+        }
+        .nav_links{
+            list-style: none;
+        }
+        
+        .nav_links li{
+            display: inline-block;
+            padding: 0px 20px;
+        }
+
+        .nav_links li a{
+            transition: all 0.3s ease 0s;
+        }
+
+        .nav_links li a:hover{
+            color: #0088a9;
+        }
+
+        li,a,button{
+            font-family: "Poppins", sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .hamburger-menu {
+        height: 4rem;
+        width: 3rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        }
+
+        .bar {
+        width: 1.9rem;
+        height: 1.5px;
+        border-radius: 2px;
+        background-color: #eee;
+        transition: 0.5s;
+        position: relative;
+        }
+
+        .bar:before,
+        .bar:after {
+        content: "";
+        position: absolute;
+        width: inherit;
+        height: inherit;
+        background-color: #eee;
+        transition: 0.5s;
+        }
+
+        .bar:before {
+        transform: translateY(-9px);
+        }
+
+        .bar:after {
+        transform: translateY(9px);
+        }
+
+    </style>
 </head>
 <body>
     <section class="contact">
